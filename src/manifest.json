@@ -1,13 +1,10 @@
+
 {
   "manifest_version": 2,
   "name": "MV User Tools",
   "version": "0.0.2",
   "description": "Extensión de utilidades para Mediavida.com. Icono de la extensión hecho por https://freeicons.io/profile/726",
-  "applications": {
-    "gecko": {
-      "id": "KarlosWins@MVUserTools"
-    }
-  },
+
   "icons": {
     "32": "icons/icon32.png",
     "64": "icons/icon64.png",
@@ -27,7 +24,6 @@
         "*://*.mediavida.com/*"
       ],
       "js": [
-        "lib/jquery-3.5.1.slim.min.js",
         "js/mvUserTools.js"
       ]
     }
