@@ -16,14 +16,14 @@ import scss from "rollup-plugin-scss";
 
 export default commandLineArgs => {
   const isFirefox = commandLineArgs.firefox;
-  let manifestPath = 'src/manifest.json';
+  // let manifestPath = 'src/manifest.json';
 
-  // This is the important part
-  if (isFirefox === true) {
-    manifestPath = 'src/manifest.firefox.json' ;
-  }
+  // // This is the important part
+  // if (isFirefox === true) {
+  //   manifestPath = 'src/manifest.firefox.json' ;
+  // }
   return {
-  input: manifestPath,
+  input: isFirefox ? 'src/manifest.firefox.json' : 'src/manifest.json' ,
   output: {
     dir: "dist",
     format: "esm"

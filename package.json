@@ -31,6 +31,7 @@
     "build:firefox": "rollup -c --firefox",
     "watch": "rollup -c -w",
     "dev": "rollup -c -w",
+    "dev:firefox": "rollup -c -w --firefox",
     "start": "rollup -c -w"
   },
   "author": "",
