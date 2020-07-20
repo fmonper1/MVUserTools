@@ -1,4 +1,4 @@
-let browser = chrome;
+
 
 browser.storage.local.get(['ignoredUsers', 'checkboxHidePosts', 'checkboxHideThreads', 'checkboxFixNightWolf'], function (userSettings) {
 
@@ -17,7 +17,7 @@ browser.storage.local.get(['ignoredUsers', 'checkboxHidePosts', 'checkboxHideThr
         let hiddenPostCard = document.createElement('div')
         hiddenPostCard.classList.add("post","info")
         hiddenPostCard.innerHTML = `<div class="post-meta"><a href="#${postNumber}" class="qn">#${postNumber}</a><div class="post-body"><div class="locked-msg"><a class="post-btn hiddenmsg" href="#post-${postNumber}"><i class="fa fa-flag"></i> Has ocultado este post de <b>${postNumber}</b>. Pulsa para mostrar el post</a></div></div></div>`
-        // console.log("hiddenPostCard", hiddenPostCard)
+        console.log("hiddenPostCard", hiddenPostCard)
         // let hiddenPostCard = $('<div class="post info"><div class="post-meta"><a href="#' + postNumber + '" class="qn">#' + postNumber + '</a><div class="post-body"><div class="locked-msg"><a class="post-btn hiddenmsg" href="#post-' + postNumber + '"><i class="fa fa-flag"></i> Has ocultado este post de <b>' + x[i].dataset.autor + '</b>. Pulsa para mostrar el post</a></div></div></div></div>');
         x[i].classList.add('locked');
         hiddenGroup.appendChild(a);

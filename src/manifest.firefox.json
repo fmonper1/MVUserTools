@@ -1,0 +1,36 @@
+
+{
+  "manifest_version": 2,
+  "name": "MV User Tools",
+  "version": "0.0.2",
+  "description": "Extensión de utilidades para Mediavida.com. Icono de la extensión hecho por https://freeicons.io/profile/726",
+
+  "icons": {
+    "32": "icons/icon32.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png"
+  },
+  "applications": {
+    "gecko": {
+      "id": "KarlosWins@MVUserTools"
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "browser_action": {
+    "default_icon": "icons/icon32.png",
+    "default_title": "MV User Tools",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.mediavida.com/*"
+      ],
+      "js": [
+        "js/mvUserTools.js"
+      ]
+    }
+  ]
+}

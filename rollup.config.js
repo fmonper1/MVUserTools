@@ -12,10 +12,18 @@ import {
 import replace from "rollup-plugin-replace";
 import postcss from "rollup-plugin-postcss";
 import scss from "rollup-plugin-scss";
-const isProduction = process.env.NODE_ENV === "production";
+// const isProduction = process.env.NODE_ENV === "production";
 
-export default {
-  input: "src/manifest.json",
+export default commandLineArgs => {
+  const isFirefox = commandLineArgs.firefox;
+  let manifestPath = 'src/manifest.json';
+
+  // This is the important part
+  if (isFirefox === true) {
+    manifestPath = 'src/manifest.firefox.json' ;
+  }
+  return {
+  input: manifestPath,
   output: {
     dir: "dist",
     format: "esm"
@@ -48,3 +56,5 @@ export default {
     })
   ]
 };
+
+}
