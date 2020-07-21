@@ -16,7 +16,8 @@ browser.storage.local.get(
     "ignoredUsers",
     "checkboxHidePosts",
     "checkboxHideThreads",
-    "checkboxFixNightWolf"
+    "checkboxFixNightWolf",
+    "checkboxFavouritesHomepage"
   ],
   function(userSettings) {
     // Ocultar posts
@@ -46,14 +47,24 @@ browser.storage.local.get(
       }
     }
 
-    // Ocultar hilos
-    if (userSettings.checkboxHideThreads) {
-      let threads = document.getElementsByClassName("tooltip-left");
-      for (let i = 0; i < threads.length; i++) {
-        let nombreUsuario = threads[i].href.split("/");
-        nombreUsuario = nombreUsuario[nombreUsuario.length - 1];
-        if (userSettings.ignoredUsers.includes(nombreUsuario)) {
-          threads[i].parentNode.parentNode.style.display = "none";
+    if (userSettings.checkboxFavouritesHomepage) {
+      document.querySelector(".f2 a").click();
+      document.querySelector(".f2 a").click();
+      let favourites = document.querySelector(".f2 .flyout");
+      let sidebar = document.querySelector(".c-side");
+      let fragment = document.createDocumentFragment();
+      fragment.appendChild(favourites);
+      // console.log(favourites, sidebar, sidebar.querySelector(".b-side"));
+      sidebar.insertBefore(fragment, sidebar.querySelector(".b-side"));
+      // Ocultar hilos
+      if (userSettings.checkboxHideThreads) {
+        let threads = document.getElementsByClassName("tooltip-left");
+        for (let i = 0; i < threads.length; i++) {
+          let nombreUsuario = threads[i].href.split("/");
+          nombreUsuario = nombreUsuario[nombreUsuario.length - 1];
+          if (userSettings.ignoredUsers.includes(nombreUsuario)) {
+            threads[i].parentNode.parentNode.style.display = "none";
+          }
         }
       }
     }
@@ -66,7 +77,7 @@ browser.storage.local.get(
       for (let i = 0; i < autores.length; i++) {
         let userURL = autores[i].href.split("/");
         let username = userURL[userURL.length - 1];
-        if (username == "NigthWolf") {
+        if (username === "NigthWolf") {
           autores[i].textContent = "NightWolf";
         }
       }

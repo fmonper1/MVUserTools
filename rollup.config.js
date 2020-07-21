@@ -1,4 +1,4 @@
-// rollup.config.js
+// rollup.config.content
 
 import { rollup } from "rollup";
 
@@ -23,38 +23,37 @@ export default commandLineArgs => {
   //   manifestPath = 'src/manifest.firefox.json' ;
   // }
   return {
-  input: isFirefox ? 'src/manifest.firefox.json' : 'src/manifest.json' ,
-  output: {
-    dir: "dist",
-    format: "esm"
-  },
-  plugins: [
-    // always put chromeExtension() before other plugins
-    chromeExtension(),
-    simpleReloader(),
-    // the plugins below are optional
-    replace({
-      "process.env.NODE_ENV": JSON.stringify("production")
-    }),
-    babel({
-      babelHelpers: "runtime",
-      presets: [["@babel/env", { modules: false }], ["@babel/preset-react"]],
-      exclude: "node_modules/**",
-      plugins: [
-        [
-          "@babel/plugin-transform-runtime",
-          {
-            regenerator: true
-          }
+    input: isFirefox ? "src/manifest.firefox.json" : "src/manifest.json",
+    output: {
+      dir: "dist",
+      format: "esm"
+    },
+    plugins: [
+      // always put chromeExtension() before other plugins
+      chromeExtension(),
+      simpleReloader(),
+      // the plugins below are optional
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("production")
+      }),
+      babel({
+        babelHelpers: "runtime",
+        presets: [["@babel/env", { modules: false }], ["@babel/preset-react"]],
+        exclude: "node_modules/**",
+        plugins: [
+          [
+            "@babel/plugin-transform-runtime",
+            {
+              regenerator: true
+            }
+          ]
         ]
-      ]
-    }),
+      }),
 
-    resolve(),
-    commonjs({
-      include: "node_modules/**"
-    })
-  ]
+      resolve(),
+      commonjs({
+        include: "node_modules/**"
+      })
+    ]
+  };
 };
-
-}
