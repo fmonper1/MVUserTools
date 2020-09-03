@@ -57,14 +57,14 @@ browser.storage.local.get(
       // console.log(favourites, sidebar, sidebar.querySelector(".b-side"));
       sidebar.insertBefore(fragment, sidebar.querySelector(".b-side"));
       // Ocultar hilos
-      if (userSettings.checkboxHideThreads) {
-        let threads = document.getElementsByClassName("tooltip-left");
-        for (let i = 0; i < threads.length; i++) {
-          let nombreUsuario = threads[i].href.split("/");
-          nombreUsuario = nombreUsuario[nombreUsuario.length - 1];
-          if (userSettings.ignoredUsers.includes(nombreUsuario)) {
-            threads[i].parentNode.parentNode.style.display = "none";
-          }
+    }
+    if (userSettings.checkboxHideThreads) {
+      let threads = document.getElementsByClassName("tooltip-left");
+      for (let i = 0; i < threads.length; i++) {
+        let nombreUsuario = threads[i].href.split("/");
+        nombreUsuario = nombreUsuario[nombreUsuario.length - 1];
+        if (userSettings.ignoredUsers.includes(nombreUsuario)) {
+          threads[i].parentNode.parentNode.style.display = "none";
         }
       }
     }
